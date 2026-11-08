@@ -10,9 +10,7 @@ public class ModifiedCountDownLatch {
      * Inicializa o CountDownLatch com o número de clientes esperados
      * @param count Número de clientes esperados
      */
-    public ModifiedCountDownLatch(int count) {
-        this.count = count;
-    }
+    public ModifiedCountDownLatch(int count) {this.count = count;}
 
     /**
      * Decrementa o CountDownLatch e desperta a thread do servidor bloqueada em await quando chegar a 0,
@@ -39,7 +37,7 @@ public class ModifiedCountDownLatch {
         while (count > 0 && remainingTime > 0) {
             wait(remainingTime);
             long elapsed = System.currentTimeMillis() - startTime;
-            remainingTime = waitPeriod - elapsed;
+            long newRremainingTime = waitPeriod - elapsed;
         }
     }
 }
