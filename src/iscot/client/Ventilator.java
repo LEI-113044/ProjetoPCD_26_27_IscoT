@@ -65,13 +65,13 @@ public class Ventilator {
 			AreaVentilationOrderEvent evento = new AreaVentilationOrderEvent(area, true);
 
 			// atualiza a GUI
-			ventilator.setAtivo(evento.isActive());
+			ventilator.setAtivo(evento.isTurnOn());
 
 			// TODO: receive and handle messages from server
 			
 			// TODO: for first phase: create an appropriate event hardcoded locally and change the GUI accordingly
 
-			String estado = evento.isActive() ? "ligado" : "desligado";
+			String estado = evento.isTurnOn() ? "ligado" : "desligado";
 			String timestamp = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 			System.out.println("Ventilador " + estado + " - " + timestamp);
 		}
