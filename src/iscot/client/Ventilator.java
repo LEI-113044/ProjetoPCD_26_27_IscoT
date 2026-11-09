@@ -17,6 +17,7 @@ import iscot.client.gui.LightIcon;
 import iscot.client.gui.VentilatorIcon;
 import iscot.enums.Areas;
 import iscot.enums.Type;
+import iscot.events.AreaVentilationOrderEvent;
 
 public class Ventilator {
 
@@ -61,16 +62,16 @@ public class Ventilator {
 			Thread.sleep(5000);
 
 			// simula um evento que diz para ligar a ventoinha
-			boolean ordemLigar = true;
+			AreaVentilationOrderEvent evento = new AreaVentilationOrderEvent(area, true);
 
 			// atualiza a GUI
-			ventilator.setAtivo(ordemLigar);
+			ventilator.setAtivo(evento.isActive());
 
 			// TODO: receive and handle messages from server
 			
 			// TODO: for first phase: create an appropriate event hardcoded locally and change the GUI accordingly
 
-			String estado = ordemLigar ? "ligado" : "desligado";
+			String estado = evento.isActive() ? "ligado" : "desligado";
 			String timestamp = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 			System.out.println("Ventilador " + estado + " - " + timestamp);
 		}

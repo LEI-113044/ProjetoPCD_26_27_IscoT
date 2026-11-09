@@ -30,7 +30,7 @@ public class Server {
             while (running) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Novo cliente ligado por: " + clientSocket.getRemoteSocketAddress());
-                ClientHandler clientHandler = ClientHandler(clientSocket);
+                ClientHandler clientHandler = new ClientHandler(clientSocket);
                 clientHandler.start();
             }
         }catch(IOException e) {
