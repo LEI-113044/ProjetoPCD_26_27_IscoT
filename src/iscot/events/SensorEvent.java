@@ -4,7 +4,7 @@ import iscot.enums.Areas;
 import iscot.enums.Type;
 
 public abstract class SensorEvent extends Event {
-    public SensorEvent(Areas area, Type type) {
-        super(area, type);
+    public SensorEvent(Areas area) {
+        super(area, Type.SENSOR);
     }
 }

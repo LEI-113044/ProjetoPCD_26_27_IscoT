@@ -37,7 +37,7 @@ public class ModifiedCountdownLatch {
         while (count > 0 && remainingTime > 0) {
             wait(remainingTime);
             long elapsed = System.currentTimeMillis() - startTime;
-            long newRremainingTime = waitPeriod - elapsed;
+            remainingTime = waitPeriod - elapsed;
         }
     }
 }

@@ -5,31 +5,32 @@ import iscot.enums.Type;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalTime;
+import java.time.Instant;
 
 public abstract class Event implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     private final Areas area;
-    private final Type type;
-    private final LocalTime timestamp;
+    private final Type sourceType;
+    private final Instant timestamp;
 
-    public Event(Areas area, Type type) {
+    public Event(Areas area, Type sourceType) {
+        if(area == null || sourceType == null) throw new IllegalArgumentException("Área e tipo têm de ser especificados.");
         this.area = area;
-        this.type = type;
-        this.timestamp = LocalTime.now();
+        this.sourceType = sourceType;
+        this.timestamp = Instant.now();
     }
 
     public Areas getArea() {
         return area;
     }
 
-    public Type getType() {
-        return type;
+    public Type getSourceType() {
+        return sourceType;
     }
 
-    public LocalTime getTimestamp() {
+    public Instant getTimestamp() {
         return timestamp;
     }
 }

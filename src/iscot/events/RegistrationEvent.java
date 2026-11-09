@@ -10,8 +10,9 @@ public class RegistrationEvent extends Event {
     private static final long serialVersionUID = 1L;
     private final String deviceId;
 
-    public RegistrationEvent(Areas area, Type type, String deviceId) {
-        super(area, type);
+    public RegistrationEvent(Areas area, Type sourceType, String deviceId) {
+        if(deviceId == null) throw new IllegalArgumentException("ID de dispositivo tem de ser especificado.");
+        super(area, sourceType);
         this.deviceId = deviceId;
     }
 

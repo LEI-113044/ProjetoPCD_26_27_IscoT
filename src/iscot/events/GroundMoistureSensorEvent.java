@@ -1,8 +1,6 @@
 package iscot.events;
 
 import iscot.enums.Areas;
-import iscot.enums.Type;
-
 import java.io.Serial;
 
 public class GroundMoistureSensorEvent extends SensorEvent {
@@ -11,7 +9,7 @@ public class GroundMoistureSensorEvent extends SensorEvent {
     private final double groundMoisture;
 
     public GroundMoistureSensorEvent(Areas area, double groundMoisture) {
-        super(area, Type.SENSOR);
+        super(area);
         this.groundMoisture = groundMoisture;
     }
 

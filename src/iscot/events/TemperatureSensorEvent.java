@@ -1,8 +1,6 @@
 package iscot.events;
 
 import iscot.enums.Areas;
-import iscot.enums.Type;
-
 import java.io.Serial;
 
 public class TemperatureSensorEvent extends SensorEvent {
@@ -11,7 +9,7 @@ public class TemperatureSensorEvent extends SensorEvent {
     private final double temperature;
 
     public TemperatureSensorEvent(Areas area, double temperature) {
-        super(area, Type.SENSOR);
+        super(area);
         this.temperature = temperature;
     }
 

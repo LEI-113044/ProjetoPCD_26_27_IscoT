@@ -1,8 +1,6 @@
 package iscot.events;
 
 import iscot.enums.Areas;
-import iscot.enums.Type;
-
 import java.io.Serial;
 
 public class HumiditySensorEvent extends SensorEvent {
@@ -11,7 +9,7 @@ public class HumiditySensorEvent extends SensorEvent {
     private final double humidity;
 
     public HumiditySensorEvent(Areas area, double humidity) {
-        super(area, Type.SENSOR);
+        super(area);
         this.humidity = humidity;
     }
 

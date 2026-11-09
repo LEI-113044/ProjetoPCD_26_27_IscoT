@@ -1,7 +1,6 @@
 package iscot.events;
 
 import iscot.enums.Areas;
-import iscot.enums.Type;
 
 import java.io.Serial;
 
@@ -11,7 +10,7 @@ public class AreaTemperatureOrderEvent extends HighLevelOrderEvent {
     private final boolean turnOn;
 
     public AreaTemperatureOrderEvent(Areas area, boolean turnOn) {
-        super(area, Type.ACTUATOR); // Ou DECIDER dependendo de quem emite, mas tipicamente destinado a atuadores
+        super(area);
         this.turnOn = turnOn;
     }
 
