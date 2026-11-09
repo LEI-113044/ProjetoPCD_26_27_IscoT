@@ -29,7 +29,7 @@ public abstract class Event implements Serializable {
      * @throws NullPointerException if {@code area} or {@code sourceType} is {@code null}
      */
     public Event(Areas area, Type sourceType) {
-        if(area == null || sourceType == null) throw new NullPointerException("Área e tipo têm de ser especificados.");
+        if(area == null || sourceType == null) throw new NullPointerException("Area and type have to be specified.");
         this.area = area;
         this.sourceType = sourceType;
         this.timestamp = Instant.now();
