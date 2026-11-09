@@ -1,6 +1,8 @@
 package iscot.client;
 
 import java.awt.BorderLayout;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import iscot.client.gui.LightIcon;
@@ -41,6 +43,8 @@ public class HumiditySensor {
 				    0, 100, 1, 50,
 				    valor -> {
 				    	// TODO handle change in sensor
+						String timestamp = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+						System.out.println("EVENTO GERADO -> HumiditySensorEvent [" + area + "] Valor: " + valor + "% - " + timestamp);
 				    	System.out.println("Mudou para:"+valor);
 				    });
 			painel.add(sensorControl,BorderLayout.CENTER);

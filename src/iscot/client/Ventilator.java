@@ -7,7 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -42,7 +43,6 @@ public class Ventilator {
 			JFrame janela = new JFrame("Ventilador em "+area);
 			janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		
 			
 			// Criar os componentes gráficos
 			JPanel painel=new JPanel();
@@ -54,13 +54,25 @@ public class Ventilator {
 			janela.setMinimumSize(janela.getSize());
 			janela.pack();
 			janela.setVisible(true);
-			
+
+			System.out.println("[GUI] Ventilador iniciado na área " + area + ". À espera de eventos...");
+
+			// espera 5 segundos
 			Thread.sleep(5000);
-			ventilator.setAtivo(true);
+
+			// simula um evento que diz para ligar a ventoinha
+			boolean ordemLigar = true;
+
+			// atualiza a GUI
+			ventilator.setAtivo(ordemLigar);
 
 			// TODO: receive and handle messages from server
 			
 			// TODO: for first phase: create an appropriate event hardcoded locally and change the GUI accordingly
+
+			String estado = ordemLigar ? "ligado" : "desligado";
+			String timestamp = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+			System.out.println("Ventilador " + estado + " - " + timestamp);
 		}
 	}
 }
