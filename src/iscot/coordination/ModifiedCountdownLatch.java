@@ -3,14 +3,14 @@ package iscot.coordination;
 /**
  * Modified CountDownLatch API
  */
-public class ModifiedCountDownLatch {
+public class ModifiedCountdownLatch {
     private int count;
 
     /**
      * Inicializa o CountDownLatch com o número de clientes esperados
      * @param count Número de clientes esperados
      */
-    public ModifiedCountDownLatch(int count) {this.count = count;}
+    public ModifiedCountdownLatch(int count) {this.count = count;}
 
     /**
      * Decrementa o CountDownLatch e desperta a thread do servidor bloqueada em await quando chegar a 0,
