@@ -1,20 +1,26 @@
 package iscot.coordination;
 
 /**
- * Modified CountDownLatch API
+ * A countdown synchronizer that allows a thread to wait for a count to reach zero.
+ *
+ * <p>Each call to {@link #countdown()} decrements the count by one until it reaches
+ * zero. Threads waiting in {@link #await(int)} are notified when that happens.</p>
  */
 public class ModifiedCountdownLatch {
     private int count;
 
     /**
-     * Inicializa o CountDownLatch com o número de clientes esperados
-     * @param count Número de clientes esperados
+     * Creates a latch with the specified initial count.
+     *
+     * @param count number of completions to await, typically the number of expected clients
      */
     public ModifiedCountdownLatch(int count) {this.count = count;}
 
     /**
-     * Decrementa o CountDownLatch e desperta a thread do servidor bloqueada em await quando chegar a 0,
-     * ou seja, quando todos os clientes tiverem consultado o evento
+     * Decrements the count if it is greater than zero.
+     *
+     * <p>When the count reaches zero, wakes all threads waiting in {@link #await(int)}.
+     * Calls made after the count has reached zero have no effect.</p>
      */
     public synchronized void countdown() {
         if (count > 0) {
@@ -26,9 +32,14 @@ public class ModifiedCountdownLatch {
     }
 
     /**
-     * Suspende a execução da thread atual até que o contador atinja 0
-     * @param waitPeriod Período máximo de espera em ms.
-     * @throws InterruptedException Caso a thread seja interrompida.
+     * Waits until the count reaches zero or the maximum wait period elapses.
+     *
+     * <p>The method may return because the count reached zero or because the timeout
+     * elapsed; it does not indicate which condition occurred. A non-positive wait
+     * period causes the method to return without waiting if the count is still positive.</p>
+     *
+     * @param waitPeriod maximum time to wait, in milliseconds
+     * @throws InterruptedException if the current thread is interrupted while waiting
      */
     public synchronized void await(int waitPeriod) throws InterruptedException {
         long remainingTime = waitPeriod;
