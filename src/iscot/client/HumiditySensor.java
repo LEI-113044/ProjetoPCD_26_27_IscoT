@@ -44,7 +44,7 @@ public class HumiditySensor {
 				    valor -> {
 				    	// TODO handle change in sensor
 						String timestamp = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-						System.out.println("EVENTO GERADO -> HumiditySensorEvent [" + area + "] Valor: " + valor + "% - " + timestamp);
+						System.out.println("Evento: HumiditySensorEvent [" + area + "] Valor: " + valor + "% - " + timestamp);
 				    	System.out.println("Mudou para:"+valor);
 				    });
 			painel.add(sensorControl,BorderLayout.CENTER);
