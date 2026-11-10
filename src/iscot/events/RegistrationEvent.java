@@ -23,8 +23,8 @@ public class RegistrationEvent extends Event {
      * @throws NullPointerException if {@code area}, {@code sourceType}, or {@code deviceId} is {@code null}
      */
     public RegistrationEvent(Areas area, Type sourceType, String deviceId) {
-        if(deviceId == null) throw new NullPointerException("DeviceID has to be specified.");
         super(area, sourceType);
+        if(deviceId == null) throw new NullPointerException("DeviceID has to be specified.");
         this.deviceId = deviceId;
     }
 
@@ -35,5 +35,12 @@ public class RegistrationEvent extends Event {
      */
     public String getDeviceId() {
         return deviceId;
+    }
+
+    @Override
+    public String toString() {
+        return "RegistrationEvent{" +
+                "deviceId='" + deviceId + '\'' +
+                '}';
     }
 }

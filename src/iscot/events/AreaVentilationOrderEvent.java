@@ -31,7 +31,12 @@ public class AreaVentilationOrderEvent extends HighLevelOrderEvent {
      *
      * @return {@code true} to request ventilation; {@code false} otherwise
      */
-    public boolean isTurnOn() {
-        return turnOn;
+    public boolean isTurnOn() {return turnOn;}
+
+    @Override
+    public String toString() {
+        return "AreaVentilationOrderEvent{" +
+                "turnOn=" + turnOn +
+                '}';
     }
 }

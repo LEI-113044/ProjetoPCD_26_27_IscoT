@@ -61,4 +61,13 @@ public abstract class Event implements Serializable {
     public Instant getTimestamp() {
         return timestamp;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "area=" + area +
+                ", sourceType=" + sourceType +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }

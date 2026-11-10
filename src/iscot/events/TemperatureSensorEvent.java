@@ -32,4 +32,12 @@ public class TemperatureSensorEvent extends SensorEvent {
     public double getTemperature() {
         return temperature;
     }
+
+    @Override
+    public String toString() {
+        return "TemperatureSensorEvent{" +
+                "area=" + super.getArea() +
+                "temperature=" + temperature +
+                '}';
+    }
 }

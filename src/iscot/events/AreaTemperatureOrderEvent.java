@@ -24,9 +24,9 @@ public class AreaTemperatureOrderEvent extends HighLevelOrderEvent {
      * @throws NullPointerException if {@code area} or {@code mode} is {@code null}
      */
     public AreaTemperatureOrderEvent(Areas area, AirConditioningMode mode) {
+        super(area);
         if(mode == AirConditioningMode.Desligado || mode == AirConditioningMode.Ventilação)
             throw new IllegalArgumentException("Cannot change AirConditioningMode to Ventilação ou Desligado.");
-        super(area);
         this.mode = Objects.requireNonNull(mode, "mode");
     }
 
@@ -37,5 +37,12 @@ public class AreaTemperatureOrderEvent extends HighLevelOrderEvent {
      */
     public AirConditioningMode getMode() {
         return mode;
+    }
+
+    @Override
+    public String toString() {
+        return "AreaTemperatureOrderEvent{" +
+                "mode=" + mode +
+                '}';
     }
 }
