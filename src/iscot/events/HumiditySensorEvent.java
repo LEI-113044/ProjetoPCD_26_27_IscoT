@@ -32,4 +32,11 @@ public class HumiditySensorEvent extends SensorEvent {
     public double getHumidity() {
         return humidity;
     }
+
+    @Override
+    public String toString() {
+        return "HumiditySensorEvent{" +
+                "humidity=" + humidity +
+                '}';
+    }
 }

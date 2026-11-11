@@ -31,4 +31,11 @@ public class AreaIrrigationOrderEvent extends HighLevelOrderEvent {
     public boolean isTurnOn() {
         return turnOn;
     }
+
+    @Override
+    public String toString() {
+        return "AreaIrrigationOrderEvent{" +
+                "turnOn=" + turnOn +
+                '}';
+    }
 }

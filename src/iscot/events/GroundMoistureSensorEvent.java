@@ -32,4 +32,11 @@ public class GroundMoistureSensorEvent extends SensorEvent {
     public double getGroundMoisture() {
         return groundMoisture;
     }
+
+    @Override
+    public String toString() {
+        return "GroundMoistureSensorEvent{" +
+                "groundMoisture=" + groundMoisture +
+                '}';
+    }
 }
