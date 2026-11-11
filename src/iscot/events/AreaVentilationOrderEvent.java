@@ -1,6 +1,5 @@
 package iscot.events;
 
-import iscot.enums.AirConditioningMode;
 import iscot.enums.Areas;
 
 import java.io.Serial;

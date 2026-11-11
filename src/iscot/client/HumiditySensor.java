@@ -5,10 +5,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import iscot.client.gui.LightIcon;
 import iscot.client.gui.SensorControl;
 import iscot.enums.Areas;
-import iscot.enums.Type;
 import iscot.events.HumiditySensorEvent;
 
 public class HumiditySensor {

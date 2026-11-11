@@ -25,7 +25,7 @@ public class AreaLightingOrderEvent extends HighLevelOrderEvent {
     }
 
     /**
-     * Indicates whether this order requests the lights to be turned on.
+     * Indicates whether this order requests the lights to be turned on or off.
      *
      * @return {@code true} to turn the lights on; {@code false} to turn them off
      */
