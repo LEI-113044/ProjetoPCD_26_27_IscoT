@@ -7,7 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,6 +17,7 @@ import iscot.client.gui.LightIcon;
 import iscot.client.gui.VentilatorIcon;
 import iscot.enums.Areas;
 import iscot.enums.Type;
+import iscot.events.AreaVentilationOrderEvent;
 
 public class Ventilator {
 
@@ -42,7 +44,6 @@ public class Ventilator {
 			JFrame janela = new JFrame("Ventilador em "+area);
 			janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-		
 			
 			// Criar os componentes gráficos
 			JPanel painel=new JPanel();
@@ -54,13 +55,26 @@ public class Ventilator {
 			janela.setMinimumSize(janela.getSize());
 			janela.pack();
 			janela.setVisible(true);
-			
-			Thread.sleep(5000);
-			ventilator.setAtivo(true);
+
+			System.out.println("[GUI] Ventilador iniciado na área " + area + ". À espera de eventos...");
 
 			// TODO: receive and handle messages from server
 			
 			// TODO: for first phase: create an appropriate event hardcoded locally and change the GUI accordingly
+
+			Thread.sleep(5000);
+			aplicarEvento(ventilator, new AreaVentilationOrderEvent(area, true));
+
+			Thread.sleep(5000);
+			aplicarEvento(ventilator, new AreaVentilationOrderEvent(area, false));
 		}
+	}
+
+	private static void aplicarEvento(VentilatorIcon ventilator, AreaVentilationOrderEvent evento) {
+		ventilator.setAtivo(evento.isTurnOn());
+
+		String estado = evento.isTurnOn() ? "ligado" : "desligado";
+		String timestamp = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+		System.out.println("Ventilador " + estado + " - " + timestamp);
 	}
 }

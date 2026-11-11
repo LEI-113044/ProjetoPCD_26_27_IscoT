@@ -16,7 +16,7 @@ public class ACIcon extends ComponentState {
 	}
 /** 
  * 
- * @param modo: valores 
+ * @param mode: valores
  */
 	public void setModo(AirConditioningMode mode) {
 	    this.mode = mode;
