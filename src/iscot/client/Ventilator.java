@@ -58,22 +58,23 @@ public class Ventilator {
 
 			System.out.println("[GUI] Ventilador iniciado na área " + area + ". À espera de eventos...");
 
-			// espera 5 segundos
-			Thread.sleep(5000);
-
-			// simula um evento que diz para ligar a ventoinha
-			AreaVentilationOrderEvent evento = new AreaVentilationOrderEvent(area, true);
-
-			// atualiza a GUI
-			ventilator.setAtivo(evento.isTurnOn());
-
 			// TODO: receive and handle messages from server
 			
 			// TODO: for first phase: create an appropriate event hardcoded locally and change the GUI accordingly
 
-			String estado = evento.isTurnOn() ? "ligado" : "desligado";
-			String timestamp = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-			System.out.println("Ventilador " + estado + " - " + timestamp);
+			Thread.sleep(5000);
+			aplicarEvento(ventilator, new AreaVentilationOrderEvent(area, true));
+
+			Thread.sleep(5000);
+			aplicarEvento(ventilator, new AreaVentilationOrderEvent(area, false));
 		}
+	}
+
+	private static void aplicarEvento(VentilatorIcon ventilator, AreaVentilationOrderEvent evento) {
+		ventilator.setAtivo(evento.isTurnOn());
+
+		String estado = evento.isTurnOn() ? "ligado" : "desligado";
+		String timestamp = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+		System.out.println("Ventilador " + estado + " - " + timestamp);
 	}
 }
