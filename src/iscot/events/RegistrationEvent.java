@@ -2,7 +2,6 @@ package iscot.events;
 
 import iscot.enums.Areas;
 import iscot.enums.Type;
-
 import java.io.Serial;
 
 /**
@@ -26,6 +25,11 @@ public class RegistrationEvent extends Event {
         super(area, sourceType);
         if(deviceId == null) throw new NullPointerException("DeviceID has to be specified.");
         this.deviceId = deviceId;
+    }
+
+    // For client initial registration request:
+    public RegistrationEvent(Areas area, Type sourceType) {
+        this(area, sourceType, "PENDING");
     }
 
     /**
